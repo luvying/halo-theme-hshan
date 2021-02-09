@@ -4,9 +4,14 @@
 <script src="${theme_base!}/assets/media/scripts/main.min.js?ver=202101022020"></script>
 <script src="//cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script>
+<!-- cxy add -->
+<script src="//cdn.jsdelivr.net/gh/cxying/ying-blog-cdn@master/files/static/scripts/hanshan-custom.js"></script>
+
 <#if settings.auto_night_mode>
-    <script src="//cdn.jsdelivr.net/gh/hshanx/halo-comment-normal@v1.0.0/dist/halo-comment.min.js"></script>
-<#else>
+    <!-- cxy del <script src="//cdn.jsdelivr.net/gh/hshanx/halo-comment-normal@v1.0.0/dist/halo-comment.min.js"></script> -->
+    <script src="//cdn.jsdelivr.net/gh/hshanx/halo-comment-hshan@latest/dist/halo-comment.min.js"></script>
+
+  <#else>
     <script src="${options.comment_internal_plugin_js!'//cdn.jsdelivr.net/gh/hshanx/halo-comment-normal@v1.0.0/dist/halo-comment.min.js'}"></script>
 </#if>
 
@@ -271,4 +276,36 @@
     console.log("%c 有朋自远方来, 不亦说乎.", "background:#24272A; color:#ffffff", "");
     console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/hshanx");
     console.log("%c 版本号: %c", "background:#24272A; color:#ffffff", "", "1.4.2");
+    
+	console.log("%c ", "background:#ffffff url(https://cdn.jsdelivr.net/gh/luvying/ying-blog-cdn/files/static/images/nyancat.gif) no-repeat center;padding-left:250px;padding-bottom: 250px;");
+	console.log("%c ${blog_title!}: %c 你打开F12干啥Σ(っ °Д °;) っ 快给我关上！", "background:#24272A; color:#ffffff; font-size:15px;", "background:#F4A7B9; color:#ffffff; font-size:15px;");
+    
+    var title;
+    window.onblur=function(){
+      title = document.title;
+      document.title = "（╯‵□′）╯︵┴─┴ 快回来 - ${blog_title!}";
+    };    
+    window.onfocus=function () {
+      if(title) { // 防止第一次访问页面还没加载而title=undefined的情况
+        document.title = title;
+      }
+    };
+    
+    // 监听复制事件
+    //document.addEventListener("copy", function(e) {
+		//取消默认事件，才能修改复制的值
+		//e.preventDefault();
+		//复制的内容
+        //var oriTxt = window.getSelection(0).toString();
+		//var copyTxt = oriTxt + "\n————————————————————" +
+					//"\n作者：${user.nickname!}" +
+					//"\n原文链接：" + window.location.href +
+					//"\n著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。";
+		//if(e.clipboardData) {
+          	//e.clipboardData.setData('text/plain', copyTxt);
+	 	//}
+      	//else if(window.clipboardData){
+      		//return window.clipboardData.setData("text", copyTxt);
+      	//}
+	//});
 </script>
