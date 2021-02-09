@@ -10,13 +10,26 @@
                 <article class="post tag-getting-started" id="siteContent">
                     <#--                    <div id="postHeader"></div>-->
                     <header class="bg-cover post-header" id="postHeader">
+                        <#-- cxy edit begin -->
+                        <#--<#if post.thumbnail?? && post.thumbnail!=''>-->
+                        <#--    <div class="cover-bg">-->
+                        <#--        <img src="${post.thumbnail!}" alt="${post.title!}"/>-->
+                        <#--    </div>-->
+                        <#--<#else>-->
+                        <#--    <div class="default-cover-bg"></div>-->
                         <#if post.thumbnail?? && post.thumbnail!=''>
                             <div class="cover-bg">
                                 <img src="${post.thumbnail!}" alt="${post.title!}"/>
                             </div>
                         <#else>
-                            <div class="default-cover-bg">
-                            </div>
+                            <#if settings.enable_posts_custom_default_patternimg!true>
+                                <div class="cover-bg">
+                                    <img src="${settings.posts_custom_default_patternimg!}?t=${post.slug!}" alt="${post.title!}"/>
+                                </div>
+                            <#else>
+                                <div class="default-cover-bg"></div>
+                            </#if>
+                            <#-- cxy edit end -->
                         </#if>
                         <div class="cover-content">
                             <div class="inner">
@@ -118,8 +131,15 @@
                                             <img src="${prevPost.thumbnail!}" alt=""/>
                                         </div>
                                     <#else>
-                                        <div class="nav-bg default-cover-bg">
-                                        </div>
+                                        <#-- cxy edit begin -->
+                                        <#if settings.enable_posts_custom_default_patternimg!true>
+                                            <div class="nav-bg ">
+                                                <img src="${settings.posts_custom_default_patternimg!}?t=${prevPost.slug!}" alt=""/>
+                                            </div>
+                                        <#else>
+                                            <div class="nav-bg default-cover-bg"></div>
+                                        </#if>
+                                        <#-- cxy edit end -->
                                     </#if>
                                     <div class="nav-inside">
                                         <span class="nav-before">上一篇</span>
@@ -137,8 +157,15 @@
                                             <img src="${nextPost.thumbnail!}" alt=""/>
                                         </div>
                                     <#else>
-                                        <div class="nav-bg default-cover-bg">
-                                        </div>
+                                        <#-- cxy edit begin -->
+                                        <#if settings.enable_posts_custom_default_patternimg!true>
+                                            <div class="nav-bg ">
+                                                <img src="${settings.posts_custom_default_patternimg!}?t=${nextPost.slug!}" alt=""/>
+                                            </div>
+                                        <#else>
+                                            <div class="nav-bg default-cover-bg"></div>
+                                        </#if>
+                                        <#-- cxy edit end -->
                                     </#if>
                                     <div class="nav-inside">
                                         <span class="nav-before">下一篇</span>
