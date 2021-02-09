@@ -17,9 +17,17 @@
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+        <!-- cxy add -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/cxying/ying-blog-cdn@master/files/static/styles/common.css">
 
-        <title>${title}</title>
-
+	    <!--<title>${title}</title>-->
+        <!--cxy add 20200417-->
+        <#if "${title}"?contains("${blog_title!}") >
+          <title>${title}</title>
+        <#else>
+          <title>${title}-${blog_title!}</title>
+        </#if>
+        <!--cxy add 20200417-->
         <script language=javascript>
             <!--
             window.onerror=function(){return true;}
