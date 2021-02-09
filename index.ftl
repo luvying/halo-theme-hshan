@@ -6,9 +6,16 @@
                 <!-- 封面 -->
                 <header class="bg-cover hero">
                     <#if settings.home_cover?? && settings.home_cover!=''>
-                        <div class="cover-bg">
-                            <img src="${settings.home_cover!}" alt="">
-                        </div>
+                        <!--cxy add if =begin=-->
+                        <#if settings.home_cover_style>
+                            <div class="cover-bg">
+                                <img src="${settings.home_cover!}" alt="">
+                            </div>
+                        <#else>
+                            <div class="cover-bg fixed" style="background-image: url(${settings.home_cover!});">
+                            </div>
+                        </#if>
+                        <!--cxy add if =end=-->
                     <#else>
                         <div class="default-cover-bg">
                         </div>
