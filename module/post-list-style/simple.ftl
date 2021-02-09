@@ -28,11 +28,24 @@
                     </p>
                 </div>
 
+                <#--<#if post.thumbnail?? && post.thumbnail!=''>-->
+                <#--    <a href="${post.fullPath!}" data-ajax class="post-feature-image"-->
+                <#--       style="background-image: url(${post.thumbnail!})">-->
+                <#--    </a>-->
+                <#--</#if>-->
+                <#-- cxy edit begin -->
                 <#if post.thumbnail?? && post.thumbnail!=''>
                     <a href="${post.fullPath!}" data-ajax class="post-feature-image"
                        style="background-image: url(${post.thumbnail!})">
                     </a>
+                <#else>
+                    <#if settings.enable_posts_custom_default_patternimg!true>
+                            <a href="${post.fullPath!}" data-ajax class="post-feature-image"
+                               style="background-image: url(${settings.posts_custom_default_patternimg!}?t=${post.slug!})">
+                            </a>
+                    </#if>
                 </#if>
+                <#-- cxy edit end -->
             </article>
         </#list>
     </#if>
